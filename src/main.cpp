@@ -3,6 +3,7 @@
 
 #include "esp_heap_caps.h"
 
+
 void heapCapsAllocFailedHook(size_t requestedSize, uint32_t caps, const char *functionName)
 {
     ESP_EARLY_LOGE("heap", "%s failed to allocate %lu bytes with 0x%lX capabilities", functionName, static_cast<unsigned long>(requestedSize), static_cast<unsigned long>(caps));
@@ -223,6 +224,7 @@ void setupNetwork() {
     HX711::ConnectToWifi(updating);
     DS18B20::ConnectToWifi(updating);
 #endif
+
 
     unsigned int connectProgress = 0;
     HeadlessWiFiSettings.onWaitLoop = [&connectProgress]() {
